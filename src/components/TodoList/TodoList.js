@@ -1,10 +1,13 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import {connect} from 'react-redux';
+
+import {Button, Modal} from "react-bootstrap";
 
 import {fetchTodos, setTodo, updateTodo, deleteTodo} from "../../actions/todoActions";
 import './TodoList.css'
+import TodoDetail from "../TodoDetail/TodoDetail";
 
-//TODO: DELETE THIS
+//TODO: DELETE THIS after API
 let fakeTodos = [
     {
         _id: '5e80c41a05237c0004cb52fd',
@@ -35,6 +38,14 @@ let fakeTodos = [
 
 class TodosList extends Component {
 
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            showDetail: false
+        }
+    }
+
     componentDidMount() {
         const {dispatch} = this.props;
         dispatch(fetchTodos());
@@ -59,6 +70,10 @@ class TodosList extends Component {
     //
     editSelectedTodo = (todo) => {
         this.setSelectedTodo(todo);
+
+        this.setState( {
+            showDetail: true
+        })
 
         //TODO: Do some editing
     };
@@ -90,7 +105,7 @@ class TodosList extends Component {
                 <td className={props.todo.completed ? 'completed' : null}>{props.todo.priority}</td>
                 <td className={props.todo.completed ? 'completed' : null}>{new Date(props.todo.dateCreated).toDateString()}</td>
                 <td>
-                    <button onClick={()=>this.editSelectedTodo(props.selectedTodo)}>Edit</button>
+                    <EditButton todo={props.todo}/>
                 </td>
                 <td>
                     <button onClick={()=>this.completeSelectedTodo(props.todo)}>Mark Complete</button>
@@ -100,6 +115,23 @@ class TodosList extends Component {
                 </td>
             </tr>
         );
+
+        const EditButton = ({todo}) => {
+            const [show, setShow] = useState(false);
+
+            const handleClose = () => setShow(false);
+            const handleShow = () => setShow(true);
+
+            return (
+            <>
+                <Button variant="primary" onClick={handleShow}>
+                    Edit
+                </Button>
+
+                <TodoDetail showDetails={show} id={'badID'} closeDetail={handleClose} todo={todo}/>
+            </>
+            )
+        };
 
         return (
             <div>
@@ -129,6 +161,8 @@ class TodosList extends Component {
                     {/*)}*/}
                     </tbody>
                 </table>
+
+                <TodoDetail />
             </div>
         )
     }

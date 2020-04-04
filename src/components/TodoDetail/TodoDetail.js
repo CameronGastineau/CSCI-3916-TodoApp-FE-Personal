@@ -40,10 +40,11 @@ class TodoDetail extends Component {
             }
             return (
                 <div>
-                    <h4>Date Created: {todo.dateCreated}</h4>
+                    <p align={"center"}>Todo Created: {new Date(todo.dateCreated).toDateString()}</p>
 
                     <Form>
                         <Form.Group controlId={"name"}>
+                            <Form.Label>Name</Form.Label>
                             <Form.Control onChange={this.updateTodoDetails} value={todo.name}
                                           type="name" placeholder="TodoDetail Name"/>
                         </Form.Group>
@@ -58,6 +59,7 @@ class TodoDetail extends Component {
                         </Form.Group>
 
                         <Form.Group controlId={"dateDue"}>
+                            <Form.Label>Due Date</Form.Label>
                             <Form.Control onChange={this.updateTodoDetails} value={todo.dateDue}
                                           type="date" placeholder="Due Date"/>
                         </Form.Group>
@@ -77,17 +79,19 @@ class TodoDetail extends Component {
         return (
             <div>
                 <Modal size="md"
-                       show={true}
+                       show={this.props.showDetails && this.props.loggedIn}
                        centered={true}
-                       enforceFocus={true}>
+                       enforceFocus={true}
+                       onHide={this.props.closeDetail}
+                >
                     <Modal.Header>
                         <Modal.Title className="mx-auto" id="TodoModalTitle">
-                            <h3>TodoDetail Details</h3>
+                            <h1>Todo Details</h1>
                         </Modal.Title>
                     </Modal.Header>
 
                     <Modal.Body>
-                        <TodoDetails todo={this.props.selectedTodo}/>
+                        <TodoDetails todo={this.props.todo}/>
                     </Modal.Body>
 
                     <Modal.Footer>
@@ -106,11 +110,10 @@ class TodoDetail extends Component {
     }
 }
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state) => {
     return {
         loggedIn: state.auth.loggedIn,
-        selectedTodo: state.todo.selectedTodo,
-        id: ownProps.match.params.id
+        selectedTodo: state.todo.selectedTodo
     }
 };
 
