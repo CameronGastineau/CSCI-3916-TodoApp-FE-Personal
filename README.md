@@ -1,10 +1,8 @@
-## Team Todo-App Project for CSCI-3916
+# Team Todo-App Project for CSCI-3916
 
-##Front-End:
+## Front-End:
+On Heroku: https://csci-3916-todoapp-fe.herokuapp.com/
 
-
-##Back-End:
-
-
-
-##Postman:
+## Back-End:
++ Repo:
++ Postman Tests:
