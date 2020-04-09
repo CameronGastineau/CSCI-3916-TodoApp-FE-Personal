@@ -4,5 +4,4 @@
 On Heroku: https://csci-3916-todoapp-fe.herokuapp.com/
 
 ## Back-End:
-+ Repo:
-+ Postman Tests:
++ Repo: https://github.com/indigoplateau/TodoAppServer

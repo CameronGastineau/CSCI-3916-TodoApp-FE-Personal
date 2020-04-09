@@ -58,7 +58,7 @@ export function submitRegister(data){
                 }
                 return response.json();
             })
-            .then( (res) => {
+            .then( () => {
 
                 dispatch(submitLogin(data));
             })

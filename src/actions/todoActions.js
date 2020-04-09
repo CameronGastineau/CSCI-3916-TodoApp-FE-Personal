@@ -1,26 +1,5 @@
 import {todoActionTypes as actionTypes} from '../constants';
 import runtimeEnv from '@mars/heroku-js-runtime-env';
-// import axios from "axios";
-
-// axios.get('http://localhost:4000/todos/')
-//     .then(response => {
-//         this.setState({ todos: response.data });
-//     })
-//     .catch(function (error){
-//         console.log(error);
-//     })
-// axios.get('http://localhost:4000/todos/'+this.props.match.params.id)
-//     .then(response => {
-//         this.setState({
-//             todo_description: response.data.todo_description,
-//             todo_responsible: response.data.todo_responsible,
-//             todo_priority: response.data.todo_priority,
-//             todo_completed: response.data.todo_completed
-//         })
-//     })
-//     .catch(function (error) {
-//         console.log(error);
-//     })
 
 function todosFetched(todos) {
     return {
@@ -60,7 +39,7 @@ function todoUpdated(todo) {
 function todoDeleted(todo) {
     return {
         type: actionTypes.DELETE_TODO,
-        selectedTodo: ''
+        selectedTodo: todo
     }
 }
 
