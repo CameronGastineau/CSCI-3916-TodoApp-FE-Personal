@@ -7,35 +7,6 @@ import {fetchTodos, setTodo, updateTodo, deleteTodo} from "../../actions/todoAct
 import './TodoList.css'
 import TodoDetail from "../TodoDetail/TodoDetail";
 
-//TODO: DELETE THIS after API
-let fakeTodos = [
-    {
-        _id: '5e80c41a05237c0004cb52fd',
-        name: 'Test Todo',
-        priority: null,
-        dateDue: Date(),
-        dateCreated: Date(),
-        completed: false
-    },
-    {
-        _id: '5e7fa19f31ac622374b62616',
-        name: 'Test Todo 2',
-        priority: null,
-        dateDue: Date(),
-        dateCreated: Date(),
-        completed: false
-    },
-    {
-        _id: '5e7fa19f31ac622374b62616',
-        name: 'Completed Todo',
-        priority: null,
-        dateDue: Date(),
-        dateCreated: Date(),
-        completed: true
-    }
-];
-
-
 class TodosList extends Component {
 
     constructor(props) {
@@ -96,6 +67,7 @@ class TodosList extends Component {
         dispatch(deleteTodo(todo));
     };
 
+    //Need to update - Do so using the vartiables they're returning. 
     render() {
 
         const Todo = props => (
@@ -150,15 +122,10 @@ class TodosList extends Component {
                     </thead>
                     <tbody id={"tbody"}>
 
-                    {/*//TODO: DELETE THIS WHEN API IS UP*/}
-                    { fakeTodos.map((currentTodo, i) =>
+                    { this.props.todos.map((currentTodo, i) =>
                         <Todo todo={currentTodo} key={i}/>
                     )}
-
-                    {/*//TODO: UNCOMMENT WHEN API IS UP*/}
-                    {/*{ this.props.todos.map((currentTodo, i) =>*/}
-                    {/*    <Todo todo={currentTodo} key={i}/>*/}
-                    {/*)}*/}
+                    
                     </tbody>
                 </table>
 

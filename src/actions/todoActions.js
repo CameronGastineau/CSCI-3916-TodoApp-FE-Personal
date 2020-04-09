@@ -47,7 +47,9 @@ export function fetchTodos() {
     const env = runtimeEnv();
 
     return dispatch => {
-        return fetch(`${env.REACT_APP_API_URL}/todos`, {
+        /* return fetch(`${env.REACT_APP_API_URL}/todos/`, { */
+            //TODO: Fix the username insertion 
+            return fetch(`${env.REACT_APP_API_URL}/todos/t`, {
             method: 'GET',
             headers: {
                 'Authorization': localStorage.getItem('token'),
