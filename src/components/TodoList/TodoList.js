@@ -90,11 +90,9 @@ class TodosList extends Component {
                 <td className={props.todo.completed ? 'completed' : null}>{props.todo.priority}</td>
                 <td>
                     <Button onClick={()=>this.editSelectedTodo(props.todo)}> Edit </Button>
-                </td>
-                <td>
+                    &nbsp;
                     <Button onClick={()=>this.toggleCompleteStatus(props.todo)}>Toggle Complete Status</Button>
-                </td>
-                <td>
+                    &nbsp;
                     <Button onClick={()=>this.deleteSelectedTodo(props.todo)}>Delete</Button>
                 </td>
             </tr>
@@ -111,8 +109,6 @@ class TodosList extends Component {
                         <th>Date Created</th>
                         <th>Due Date</th>
                         <th>Priority</th>
-                        <th/>
-                        <th/>
                     </tr>
                     </thead>
                     <tbody id={"tbody"}>
