@@ -71,10 +71,12 @@ class Authentication extends Component {
     };
 
     resetUserDetails() {
-        this.setState({
-            username: '',
-            email: '',
-            password: ''
+        this.setState ({
+            userDetails:{
+                name: '',
+                username: '',
+                password: ''
+            }
         })
     }
 
@@ -135,8 +137,7 @@ class Authentication extends Component {
                         >
                             {this.state.toggleReg ? 'Register' : 'Go To Tasks'}
                         </Button>
-                        {/*TODO: if login/register fails, the button should wiggle.*/}
-                        {/*TODO: If it succeeds, it should dismiss and return to parent task.*/}
+                        {/*TODO: if login/register fails, the button could wiggle or we give some other sort of presentation that it failed.*/}
                     </Modal.Footer>
                 </Modal>
             </div>

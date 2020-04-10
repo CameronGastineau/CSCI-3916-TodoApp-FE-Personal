@@ -38,7 +38,7 @@ class TodoDetail extends Component {
     }
 
     handleSubmitButtonClick() {
-        //TODO: CALL updateTodo from here
+        //TODO: Once we get editing down, we should just be able to uncomment the below two lines to update.
         // const {dispatch} = this.props;
         // dispatch(updateTodo(this.props.selectedTodo))
 
