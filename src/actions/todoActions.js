@@ -4,7 +4,8 @@ import runtimeEnv from '@mars/heroku-js-runtime-env';
 function todosFetched(todos) {
     return {
         type: actionTypes.FETCH_TODOS,
-        todos: todos
+        todos: todos,
+        todo: todos[0]
     }
 }
 
